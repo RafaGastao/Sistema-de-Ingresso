@@ -14,7 +14,7 @@ Sistema web desenvolvido em Java utilizando Spring Boot para gerenciamento de ev
 - Impressão do ingresso
 - Controle de estado do ingresso (Reservado, Pago, Utilizado, Cancelado)
 
----
+
 
  Acesso ao sistema
 
