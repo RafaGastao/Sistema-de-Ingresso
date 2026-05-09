@@ -163,7 +163,7 @@ No momento da entrada do evento, o administrador pode validar o código do QR Co
 * ainda está apenas reservado.
 Caso o ingresso esteja válido, ele é marcado como `UTILIZADO`.
 ## Porta da Aplicação
-Por padrão, a aplicação utiliza a porta:
+Utiliza a porta:
 ```text
 8080
 ```
