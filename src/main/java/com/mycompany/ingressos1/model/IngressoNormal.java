@@ -18,6 +18,11 @@ public class IngressoNormal extends Ingresso {
         super(nomeEvento, nomeCliente, dataEvento, valorBase);
     }
 
+    public IngressoNormal(String eventoId, String clienteLogin, String nomeEvento, String nomeCliente,
+                          String dataEvento, String localEvento, double valorBase) {
+        super(eventoId, clienteLogin, nomeEvento, nomeCliente, dataEvento, localEvento, valorBase);
+    }
+
     @Override
     public double calcularValor() {
         return getValorBase();

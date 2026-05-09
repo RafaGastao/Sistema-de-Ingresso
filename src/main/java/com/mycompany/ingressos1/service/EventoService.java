@@ -26,4 +26,10 @@ public class EventoService {
     return eventoRepository.findById(id);
 
     }
+
+    public Evento criar(String nome, String descricao, String data, String horario, String local,
+                        int quantidadeIngressosDisponiveis, double valorBase) {
+        Evento evento = new Evento(nome, descricao, data, horario, local, quantidadeIngressosDisponiveis, valorBase);
+        return eventoRepository.save(evento);
+    }
 }

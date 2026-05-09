@@ -2,6 +2,7 @@ C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompa
 C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\controller\IngressoController.java
 C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\controller\LoginController.java
 C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\Ingressos1.java
+C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\model\Cliente.java
 C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\model\EstadoIngresso.java
 C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\model\Evento.java
 C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\model\Ingresso.java
@@ -9,10 +10,13 @@ C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompa
 C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\model\IngressoNormal.java
 C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\model\IngressoVIP.java
 C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\model\PerfilUsuario.java
+C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\model\Reserva.java
 C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\model\Usuario.java
 C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\repository\EventoRepository.java
 C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\repository\IngressoRepository.java
+C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\repository\ReservaRepository.java
 C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\repository\UsuarioRepository.java
 C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\service\EventoService.java
 C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\service\IngressoService.java
+C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\service\QrCodeService.java
 C:\Users\RafaelG\Documents\NetBeansProjects\Ingressos1\src\main\java\com\mycompany\ingressos1\service\UsuarioService.java

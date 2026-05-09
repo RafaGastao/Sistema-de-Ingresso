@@ -18,8 +18,11 @@ public class Evento {
     private String id;
 
     private String nome;
+    private String descricao;
     private String data;
+    private String horario;
     private String local;
+    private int quantidadeIngressosDisponiveis;
     private double valorBase;
 
     public Evento() {}
@@ -28,6 +31,17 @@ public class Evento {
         this.nome = nome;
         this.data = data;
         this.local = local;
+        this.valorBase = valorBase;
+    }
+
+    public Evento(String nome, String descricao, String data, String horario, String local,
+                  int quantidadeIngressosDisponiveis, double valorBase) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.data = data;
+        this.horario = horario;
+        this.local = local;
+        this.quantidadeIngressosDisponiveis = quantidadeIngressosDisponiveis;
         this.valorBase = valorBase;
     }
 
@@ -43,6 +57,14 @@ public class Evento {
         this.nome = nome;
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
     public String getData() {
         return data;
     }
@@ -51,12 +73,43 @@ public class Evento {
         this.data = data;
     }
 
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+
     public String getLocal() {
         return local;
     }
 
     public void setLocal(String local) {
         this.local = local;
+    }
+
+    public int getQuantidadeIngressosDisponiveis() {
+        return quantidadeIngressosDisponiveis;
+    }
+
+    public void setQuantidadeIngressosDisponiveis(int quantidadeIngressosDisponiveis) {
+        this.quantidadeIngressosDisponiveis = quantidadeIngressosDisponiveis;
+    }
+
+    public boolean possuiIngressosDisponiveis() {
+        return quantidadeIngressosDisponiveis > 0;
+    }
+
+    public void diminuirDisponibilidade() {
+        if (!possuiIngressosDisponiveis()) {
+            throw new IllegalStateException("Nao ha ingressos disponiveis para este evento.");
+        }
+        quantidadeIngressosDisponiveis--;
+    }
+
+    public void aumentarDisponibilidade() {
+        quantidadeIngressosDisponiveis++;
     }
 
     public double getValorBase() {

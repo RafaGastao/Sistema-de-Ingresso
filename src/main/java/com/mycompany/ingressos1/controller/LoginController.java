@@ -40,7 +40,7 @@ public class LoginController {
             if (usuario.get().getPerfil().name().equals("ADMIN")) {
                 return "redirect:/admin";
             } else {
-                return "redirect:/eventos";
+                return "redirect:/cliente";
             }
 
         } else {

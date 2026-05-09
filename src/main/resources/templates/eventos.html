@@ -2,41 +2,49 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Eventos Disponíveis</title>
+    <title>Eventos Disponiveis</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
 <div class="container">
-    <h1>Eventos Disponíveis</h1>
+    <h1>Eventos Disponiveis</h1>
+
+    <div class="top-actions">
+        <a href="/cliente" class="btn">Area do cliente</a>
+        <a href="/ingressos" class="btn">Meus ingressos</a>
+        <a href="/logout" class="btn">Sair</a>
+    </div>
 
     <table>
         <thead>
         <tr>
             <th>Evento</th>
+            <th>Descricao</th>
             <th>Data</th>
+            <th>Horario</th>
             <th>Local</th>
-            <th>Valor Base</th>
+            <th>Disponiveis</th>
+            <th>Valor</th>
             <th>Ação</th>
         </tr>
         </thead>
-
         <tbody>
         <tr th:each="evento : ${eventos}">
             <td th:text="${evento.nome}"></td>
+            <td th:text="${evento.descricao}"></td>
             <td th:text="${evento.data}"></td>
+            <td th:text="${evento.horario}"></td>
             <td th:text="${evento.local}"></td>
+            <td th:text="${evento.quantidadeIngressosDisponiveis}"></td>
             <td th:text="${'R$ ' + evento.valorBase}"></td>
             <td>
-                <a class="btn" th:href="@{/eventos/comprar/{id}(id=${evento.id})}">Comprar</a>
+                <a class="btn" th:href="@{/eventos/comprar/{id}(id=${evento.id})}"
+                   th:if="${evento.quantidadeIngressosDisponiveis > 0}">Reservar</a>
+                <span class="badge badge-danger" th:if="${evento.quantidadeIngressosDisponiveis <= 0}">Esgotado</span>
             </td>
         </tr>
         </tbody>
     </table>
-
-    <br>
-    <a href="/login" class="btn">Sair</a>
 </div>
-
 </body>
 </html>

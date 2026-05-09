@@ -2,28 +2,25 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Comprar Ingresso</title>
+    <title>Reservar Ingresso</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
 <div class="container">
-    <h1>Comprar Ingresso</h1>
+    <h1>Reservar Ingresso</h1>
 
     <div class="card" th:if="${evento != null}">
         <h2 th:text="${evento.nome}"></h2>
+        <p th:text="${evento.descricao}"></p>
         <p><strong>Data:</strong> <span th:text="${evento.data}"></span></p>
+        <p><strong>Horario:</strong> <span th:text="${evento.horario}"></span></p>
         <p><strong>Local:</strong> <span th:text="${evento.local}"></span></p>
-        <p><strong>Valor Base:</strong> R$ <span id="valorBase" th:text="${evento.valorBase}"></span></p>
+        <p><strong>Disponiveis:</strong> <span th:text="${evento.quantidadeIngressosDisponiveis}"></span></p>
+        <p><strong>Valor:</strong> R$ <span id="valorBase" th:text="${evento.valorBase}"></span></p>
     </div>
 
     <form action="/ingressos/salvar" method="post" th:if="${evento != null}">
-        <input type="hidden" name="nomeEvento" th:value="${evento.nome}">
-        <input type="hidden" name="dataEvento" th:value="${evento.data}">
-        <input type="hidden" name="valorBase" th:value="${evento.valorBase}">
-
-        <!-- Agora o cliente será o usuário logado -->
-        <input type="hidden" name="nomeCliente" th:value="${session.nomeUsuario}">
+        <input type="hidden" name="eventoId" th:value="${evento.id}">
 
         <label>Tipo de ingresso:</label>
         <select name="tipo" id="tipoIngresso" required>
@@ -37,15 +34,15 @@
             <p id="valorFinal"></p>
         </div>
 
-        <button class="btn" type="submit">Confirmar compra</button>
+        <p th:if="${erro}" th:text="${erro}" class="erro"></p>
+        <button class="btn" type="submit" th:disabled="${evento.quantidadeIngressosDisponiveis <= 0}">Confirmar reserva</button>
     </form>
 
     <div th:if="${evento == null}">
-        <p class="erro">Evento não encontrado.</p>
+        <p class="erro">Evento nao encontrado.</p>
     </div>
 
     <br>
-
     <a href="/eventos" class="btn">Voltar</a>
 </div>
 
@@ -56,15 +53,9 @@
 
     function calcularValor() {
         if (!tipo || !valorFinal) return;
-
         let valor = valorBase;
-
-        if (tipo.value === "VIP") {
-            valor = valorBase * 1.5;
-        } else if (tipo.value === "MEIA") {
-            valor = valorBase / 2;
-        }
-
+        if (tipo.value === "VIP") valor = valorBase * 1.5;
+        if (tipo.value === "MEIA") valor = valorBase / 2;
         valorFinal.innerText = "R$ " + valor.toFixed(2);
     }
 
@@ -73,6 +64,5 @@
         calcularValor();
     }
 </script>
-
 </body>
 </html>

@@ -11,6 +11,7 @@ package com.mycompany.ingressos1.model;
 
 public enum EstadoIngresso {
     RESERVADO,
+    CONFIRMADO,
     PAGO,
     CANCELADO,
     UTILIZADO

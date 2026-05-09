@@ -6,33 +6,36 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div class="container">
+    <h1>Cadastrar Evento</h1>
 
-    <div class="container">
+    <form action="/admin/salvar" method="post">
+        <label>Nome do evento:</label>
+        <input type="text" name="nome" required>
 
-        <h1>Cadastrar Evento</h1>
+        <label>Descricao:</label>
+        <textarea name="descricao" rows="4" required></textarea>
 
-        <form action="/admin/salvar" method="post">
+        <label>Data:</label>
+        <input type="date" name="data" required>
 
-            <label>Nome do evento:</label>
-            <input type="text" name="nome" required>
+        <label>Horario:</label>
+        <input type="time" name="horario" required>
 
-            <label>Data:</label>
-            <input type="date" name="data" required>
+        <label>Local:</label>
+        <input type="text" name="local" required>
 
-            <label>Local:</label>
-            <input type="text" name="local" required>
+        <label>Ingressos disponiveis:</label>
+        <input type="number" name="quantidadeIngressosDisponiveis" min="0" required>
 
-            <label>Valor base:</label>
-            <input type="number" name="valorBase" step="0.01" required>
+        <label>Valor base:</label>
+        <input type="number" name="valorBase" step="0.01" min="0" required>
 
-            <button class="btn" type="submit">Salvar Evento</button>
-        </form>
+        <button class="btn" type="submit">Salvar Evento</button>
+    </form>
 
-        <br>
-
-        <a href="/admin">Voltar</a>
-
-    </div>
-
+    <br>
+    <a href="/admin" class="btn">Voltar</a>
+</div>
 </body>
 </html>

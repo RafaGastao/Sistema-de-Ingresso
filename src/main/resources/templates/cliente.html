@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Area do Cliente</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container wide">
+    <h1>Area do Cliente</h1>
+
+    <div class="top-actions">
+        <a href="/eventos" class="btn">Catalogo de eventos</a>
+        <a href="/ingressos" class="btn">Meus ingressos</a>
+        <a href="/logout" class="btn">Sair</a>
+    </div>
+
+    <h2>Eventos disponiveis</h2>
+    <div class="grid">
+        <div class="card event-card" th:each="evento : ${eventos}">
+            <h3 th:text="${evento.nome}"></h3>
+            <p th:text="${evento.descricao}"></p>
+            <p><strong>Data:</strong> <span th:text="${evento.data}"></span> <span th:text="${evento.horario}"></span></p>
+            <p><strong>Local:</strong> <span th:text="${evento.local}"></span></p>
+            <p><strong>Disponiveis:</strong> <span th:text="${evento.quantidadeIngressosDisponiveis}"></span></p>
+            <p><strong>Valor:</strong> R$ <span th:text="${evento.valorBase}"></span></p>
+            <a class="btn" th:href="@{/eventos/comprar/{id}(id=${evento.id})}"
+               th:if="${evento.quantidadeIngressosDisponiveis > 0}">Reservar</a>
+            <span class="badge badge-danger" th:if="${evento.quantidadeIngressosDisponiveis <= 0}">Esgotado</span>
+        </div>
+    </div>
+
+    <h2>Minhas reservas</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Evento</th>
+            <th>Tipo</th>
+            <th>Valor</th>
+            <th>Status</th>
+            <th>QR Code</th>
+            <th>Ação</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ingresso : ${ingressos}">
+            <td th:text="${ingresso.nomeEvento}"></td>
+            <td th:text="${ingresso.tipoIngresso}"></td>
+            <td th:text="${'R$ ' + ingresso.valorFinal}"></td>
+            <td th:text="${ingresso.estado}"></td>
+            <td>
+                <img class="qr-small" th:if="${ingresso.codigoQr != null}" th:src="@{/ingressos/qrcode/{id}(id=${ingresso.id})}" alt="QR Code">
+            </td>
+            <td>
+                <a class="btn" th:href="@{/ingressos/{id}(id=${ingresso.id})}">Detalhes</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

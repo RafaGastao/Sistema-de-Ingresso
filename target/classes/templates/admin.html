@@ -6,39 +6,46 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div class="container">
+    <h1>Painel do Administrador</h1>
 
-    <div class="container">
-
-        <h1>Painel do Administrador</h1>
-
-        <div class="top-actions">
-            <a href="/admin/novo" class="btn">Cadastrar novo evento</a>
-            <a href="/login" class="btn">Sair</a>
-        </div>
-
-        <h2>Eventos Cadastrados</h2>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Data</th>
-                    <th>Local</th>
-                    <th>Valor Base</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr th:each="evento : ${eventos}">
-                    <td th:text="${evento.nome}"></td>
-                    <td th:text="${evento.data}"></td>
-                    <td th:text="${evento.local}"></td>
-                    <td th:text="${'R$ ' + evento.valorBase}"></td>
-                </tr>
-            </tbody>
-        </table>
-
+    <div class="top-actions">
+        <a href="/admin/novo" class="btn">Cadastrar novo evento</a>
+        <a href="/admin/validar" class="btn">Validar QR Code</a>
+        <a href="/ingressos" class="btn">Todos os ingressos</a>
+        <a href="/logout" class="btn">Sair</a>
     </div>
 
+    <h2>Eventos Cadastrados</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descricao</th>
+            <th>Data</th>
+            <th>Horario</th>
+            <th>Local</th>
+            <th>Disponiveis</th>
+            <th>Valor</th>
+            <th>Ação</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="evento : ${eventos}">
+            <td th:text="${evento.nome}"></td>
+            <td th:text="${evento.descricao}"></td>
+            <td th:text="${evento.data}"></td>
+            <td th:text="${evento.horario}"></td>
+            <td th:text="${evento.local}"></td>
+            <td th:text="${evento.quantidadeIngressosDisponiveis}"></td>
+            <td th:text="${'R$ ' + evento.valorBase}"></td>
+            <td>
+                <a class="btn" th:href="@{/admin/eventos/{id}/ingressos(id=${evento.id})}">Relatorio</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

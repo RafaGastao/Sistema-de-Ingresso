@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ingressos por Evento</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container wide">
+    <h1>Ingressos por Evento</h1>
+
+    <div class="top-actions">
+        <a href="/admin" class="btn">Painel admin</a>
+        <a href="/admin/validar" class="btn">Validar QR Code</a>
+    </div>
+
+    <div class="card" th:if="${evento != null}">
+        <h2 th:text="${evento.nome}"></h2>
+        <p><strong>Reservados/confirmados:</strong> <span th:text="${reservados}"></span></p>
+        <p><strong>Utilizados:</strong> <span th:text="${utilizados}"></span></p>
+        <p><strong>Disponiveis:</strong> <span th:text="${evento.quantidadeIngressosDisponiveis}"></span></p>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+            <th>Codigo</th>
+            <th>QR Code</th>
+            <th>Ação</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ingresso : ${ingressos}">
+            <td th:text="${ingresso.nomeCliente}"></td>
+            <td th:text="${ingresso.tipoIngresso}"></td>
+            <td th:text="${ingresso.estado}"></td>
+            <td><span class="code" th:text="${ingresso.codigoQr}"></span></td>
+            <td><img class="qr-small" th:src="@{/ingressos/qrcode/{id}(id=${ingresso.id})}" alt="QR Code"></td>
+            <td>
+                <a class="btn" th:href="@{/ingressos/{id}(id=${ingresso.id})}">Detalhes</a>
+                <a class="btn" th:href="@{/ingressos/pagar/{id}(id=${ingresso.id})}"
+                   th:if="${ingresso.estado.name() == 'RESERVADO'}">Pagar</a>
+                <a class="btn" th:href="@{/ingressos/utilizar/{id}(id=${ingresso.id})}">Validar entrada</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

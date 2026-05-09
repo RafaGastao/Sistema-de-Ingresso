@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Validar QR Code</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Validar QR Code</h1>
+
+    <div class="top-actions">
+        <a href="/admin" class="btn">Painel admin</a>
+        <a href="/ingressos" class="btn">Todos os ingressos</a>
+    </div>
+
+    <form action="/admin/validar" method="post">
+        <label>Codigo do QR Code:</label>
+        <input type="text" name="codigoQr" placeholder="Cole ou digite o codigo do ingresso" required>
+        <button class="btn" type="submit">Validar entrada</button>
+    </form>
+
+    <p th:if="${mensagem}" th:text="${mensagem}" class="mensagem"></p>
+
+    <div class="card" th:if="${ingresso != null}">
+        <p><strong>Evento:</strong> <span th:text="${ingresso.nomeEvento}"></span></p>
+        <p><strong>Cliente:</strong> <span th:text="${ingresso.nomeCliente}"></span></p>
+        <p><strong>Status atual:</strong> <span th:text="${ingresso.estado}"></span></p>
+    </div>
+</div>
+</body>
+</html>
